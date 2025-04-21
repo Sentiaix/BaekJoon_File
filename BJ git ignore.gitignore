@@ -1,0 +1,7 @@
+*.exe
+*.bat
+*.o
+*.out
+*.txt
+oj*.c
+oj*.cpp
