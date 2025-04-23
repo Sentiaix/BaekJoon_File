@@ -33,7 +33,8 @@ int main(){
     }
 
     // 마지막에서 공백을 읽은게 아니라면, 마지막은 단어로 끝났으니 1개 추가.
-    if(str[i - 1] != ' '){
+    //if(str[i -1] != ' ')로 하면 오류가 났는데, 아래같이 고치니까 잘 됨. 아마도 EOF(\0)가 
+    if(str[strlen(str) - 1] != ' '){
         count++;
     }
 
@@ -41,6 +42,8 @@ int main(){
 
     return 0;
 }
+
+
 // 아래는 GPT - 4o가 만든 프로그램. 잘 작동함
 // #include <stdio.h>
 // #include <ctype.h>
