@@ -2,6 +2,13 @@
 # C/C++ Git Ignore 설정
 # =====================
 
+# 예외
+!memo*.txt
+
+# tempCodeRunnerFile제거
+tempCodeRunnerFile.c
+tempCodeRunnerFile.exe
+
 # 빌드 및 실행 파일 무시
 *.exe
 *.bat
