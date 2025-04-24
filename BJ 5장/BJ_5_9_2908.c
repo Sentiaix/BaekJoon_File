@@ -11,19 +11,25 @@ int main(){
     // https://velog.io/@leavemealone/scanf-배열-입 << 참고
     scanf("%s %s", first_num, second_num);
 
-    char temp = first_num[0];
-    first_num[0] = first_num[2];
-    first_num[2] = temp;
+    int sum1[3] = {0};
+    int sum2[3] = {0};
 
-    char temp1 = second_num[0];
-    second_num[0] = second_num[2];
-    second_num[2] = temp1;
+    // 타입 변환. 사실 이 작업 필요없음.. 그냥 다음 Result1,2 변수에 바로 변환하면서 넣어도 되는데
+    // 가로로 코드가 길어지는건 도무자 볼 수 없다.
+    for(int i = 0; i < 3; i++){
+        sum1[i] = (int)(first_num[i] - 48);
+        sum2[i] = (int)(second_num[i] - 48);
+    }
 
-    char sum1[4] = {first_num[0], first_num[1], first_num[2]}; //이것도 일단 임시로 만든거임
+    int Result1 = sum1[2] * 100
+                + sum1[1] * 10
+                + sum1[0];
 
-    printf("%s\n", sum1);// 이거 테스트용 출력임
+    int Result2 = sum2[2] * 100
+                + sum2[1] * 10
+                + sum2[0];
 
-    printf("%s\n", first_num > second_num ? first_num : second_num);
+    printf("%d\n", Result1 > Result2 ? Result1 : Result2);
 
     return 0;
 }
