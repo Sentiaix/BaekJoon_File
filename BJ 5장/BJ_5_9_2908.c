@@ -20,8 +20,12 @@ int main(){
     second_num[2] = temp1;
 
     char sum1[4] = {first_num[0], first_num[1], first_num[2]}; //이것도 일단 임시로 만든거임
+    char sum2[4] = {second_num[0], second_num[1], second_num[2]};
 
     printf("%s\n", sum1);// 이거 테스트용 출력임
+    printf("%d\n", sum1[0] + sum1[1] + sum1[2] - 27);
+    printf("%d\n", sum2[0] + sum2[1] + sum2[2] - 23);
+    printf("--------\n"); // 뭔가 아닌데, 그냥 바꾸기 전에 값을 수정해서 반영하는게 맞는듯.
 
     printf("%s\n", first_num > second_num ? first_num : second_num);
 
