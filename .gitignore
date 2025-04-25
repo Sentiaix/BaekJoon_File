@@ -9,6 +9,8 @@
 tempCodeRunnerFile.c
 tempCodeRunnerFile.exe
 
+*.ini
+
 # 임시 파일 무시
 test*.c
 temp*.c
