@@ -6,7 +6,7 @@ int test_gruop(const char* word){
 
     for(int i = 0; word[i] != '\0'; i++){
         if(i > 0 && word[i] == word[i - 1]){
-            continue; // 전에 나온 글자와 현재 글자가 동일하0면 다음 내용은 무시하고 다시 for문으로 돌아감
+            continue; // 전에 나온 글자와 현재 글자가 동일하면 다음 내용은 무시하고 다시 for문으로 돌아감
         }
 
         if(chker[(int)(word[i] - 'a')]){
