@@ -1,48 +1,69 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+// <문제>: https://www.acmicpc.net/problem/2581
 
 // function declaration
-int prm_AtoB(int a, int b);
+int prm_AtoB(int a, int b, int* S, int* min);
 
 int main(){
     int a,b;
+    int S; // 합
+    int min; // 최솟값
 
     scanf("%d %d", &a, &b);
 
-    printf("%d\n%d\n", prm_AtoB(a,b));
+    prm_AtoB(a,b, &S, &min);
+
+    if(S != 0 && min != 0){
+        printf("%d\n%d\n", S, min);
+    } else{ // 소수가 없는 경우, -1 출력
+        printf("-1\n");
+    }
 
     return 0;
 }
 
 // define function
-int prm_AtoB(int a, int b){
-    int arr[1230] = {0,}; // 1부터 10,000까지 소수의 수는 1229개임.
-    int fct_save[10000] = {0,}; // 약수 저장
-    int real_prm_num[1000] = {0,};
+int prm_AtoB(int a, int b, int* S, int* min){
+    int prm_num[1230] = {0,}; // 1~10,000 중 소수는 1229개
     int cnt = 0;
     int sum = 0;
 
     // 소수가 아닌 수 선별
     for(int i = a; i <= b; i++){ // a부터 b까지
-        for(int j = 2; j < i; j++){ // 2부터 자기 자신 전까지로 나눠봄.
-            if(a % j == 0){ // 나눴는데 나머지가 다 0이 아니면 소수니까
-                fct_save[i] = i; // 소수면 그 index number을 저장
+
+        if(i < 2) continue; // 0,1은 소수가 아님!
+
+        int is_prime = 1; // 1이면 prime
+
+        // 나누기로 약수 존재 검증
+        for(int j = 2; j < i; j++){ 
+            if(i % j == 0){ // 나눴는데 나머지가 0이면 어떤 수의 약수임.
+                is_prime = 0; // 약수있음
+                break; // 최적화를 위해 탈출.
             }
         }
-    }
 
-    // 최종 소수 저장 배열에 값을 옮기기
-    for(int i = a; i <= b; i++){
-        if(fct_save[i] != 0){
-            real_prm_num[cnt] = fct_save[i];
+        // 소수 저장
+        if(is_prime == 1){
+            prm_num[cnt] = i;
             cnt++;
         }
     }
 
+
     // 모든 소수의 합 저장하기
-    for(int i = 0; i < b - a; i++){
-        sum += real_prm_num[i];
+    for(int i = 0; i < cnt; i++){
+        sum += prm_num[i];
     }
 
-    return sum, real_prm_num[0];
+    if(cnt > 0){
+        *S = sum;
+        *min = prm_num[0];
+    } else{
+        *S = 0;
+        *min = 0;
+    }
+
+    return 0;
 }
