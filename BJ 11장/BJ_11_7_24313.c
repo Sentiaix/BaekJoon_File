@@ -3,12 +3,27 @@
 // <문제>: https://www.acmicpc.net/problem/24313
 
 int main(){
-    int f_1, f_c; //f_1 > 함수 f에 속하는 1차항의 계수, f_c > 함수 f에 속하는 상수항    
+    int n, f_c; //n > 함수 f에 속하는 1차항의 계수, f_c > 함수 f에 속하는 상수항    
     int c; // 비교군에 속하는 상수항
     int min_n; // n값중 가장 작은 n0값
+    int chk = 1; // 조건식 불만족시 0
     // O(g(n)) = {f(n) | 모든 n ≥ n0에 대하여 f(n) ≤ c × g(n)인 양의 상수 c와 n0가 존재한다}
+    // 예: 7n + 7, c = 8, n0 = 1 이면, f(1) = 14, c*g(1) = 8
 
-    
+    scanf("%d %d", &n, &f_c); // f(n) 입력
+    scanf("%d", &c); // g(n) = n에 곱할 상수 c
+    scanf("%d", &min_n); // n의 최솟값
+    // f(n) ≤ c × g(n) >>> n(i) + f_c <= c * n(i); (단, i >= min_n)
+
+    for(min_n; min_n < 100; min_n++){
+        if(!(c * (n * min_n) >= (n * min_n) + f_c)){
+            chk = 0;
+            break;
+        }
+        // c * g(n) >= f(n)        
+    }
+
+    printf("%d\n", chk);
 
     return 0;
 }
