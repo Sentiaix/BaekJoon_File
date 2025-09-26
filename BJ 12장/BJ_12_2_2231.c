@@ -20,7 +20,7 @@ int main(){
 
     // 생성자가 없을 경우
     printf("0\n");
-    return 0;
+    return 0; 
 }
 
 // define function
